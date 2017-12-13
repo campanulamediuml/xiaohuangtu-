@@ -189,10 +189,10 @@ func run(url string,init_url string,c chan int){
 func main(){
     var init_url string
     make_dir(dir_name)
-    fmt.Printf("input the index url:(defult:\"https://www.ttt443.com\"):")
+    fmt.Printf("input the index url:(defult:\"https://www.ttt441.com\"):")
     fmt.Scanln(&init_url)
     if init_url == ""{
-        init_url = "https://www.ttt443.com"
+        init_url = "https://www.ttt441.com/htm/index.htm"
     }
     // 获取输入的网址，如果没有输入，则使用默认的网址
     page_index := []string{"1","2","3","4","6","7","8"}
@@ -200,7 +200,7 @@ func main(){
     url_list := []string {}
     var url string
     for _,page := range page_index{
-        url = "https://www.ttt443.com/htm/piclist"+page+"/"
+        url = init_url+"/htm/piclist"+page+"/"
         max_page := get_page_range(url)
         // 获取每一个对应的图片网址的索引
         for i := 1;i<= max_page;i++{
@@ -211,7 +211,7 @@ func main(){
     // 获取全部单页的列表
     ch:=make(chan int, len(url_list)-1)
     for _,url := range url_list{
-        run(url,init_url,ch)  
+        go run(url,init_url,ch)  
     }
     // 通过并发进行运行，同时开始爬取图片
     var sum int
