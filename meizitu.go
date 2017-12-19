@@ -13,6 +13,7 @@ import(
 
 var file_path = "images/"
 var dir_name = "images"
+var count int = 1
 
 func Get_user_agent()(user_agent_list map[int]string){
     var user_agent map[int]string
@@ -169,6 +170,7 @@ func download_pic(pic_url_list []string){
         if content != "0"{
             ioutil.WriteFile(file_path+file_name,[]byte(content),0666)
             fmt.Println("Download ==> ",pic_url,"successful")
+            count = count +1
         }
     }
     // 下载图片的方法，把图片打开后转为字节码，写入文件中
@@ -189,10 +191,10 @@ func run(url string,init_url string,c chan int){
 func main(){
     var init_url string
     make_dir(dir_name)
-    fmt.Printf("input the index url:(defult:\"https://www.ttt441.com\"):")
+    fmt.Printf("input the index url:(defult:\"https://www.ttt366.com\"):")
     fmt.Scanln(&init_url)
     if init_url == ""{
-        init_url = "https://www.ttt441.com/htm/index.htm"
+        init_url = "https://www.ttt366.com"
     }
     // 获取输入的网址，如果没有输入，则使用默认的网址
     page_index := []string{"1","2","3","4","6","7","8"}
@@ -225,7 +227,8 @@ func main(){
                 break forEnd
             }
         }
-    }   
+    }
+    fmt.Println("done",count)   
 }
 
 
