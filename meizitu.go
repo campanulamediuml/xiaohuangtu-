@@ -11,8 +11,8 @@ import(
    "strconv"
 )
 
-var file_path = "images/"
-var dir_name = "images"
+var file_path = "porn/"
+var dir_name = "porn"
 var count int = 1
 
 func Get_user_agent()(user_agent_list map[int]string){
@@ -191,10 +191,10 @@ func run(url string,init_url string,c chan int){
 func main(){
     var init_url string
     make_dir(dir_name)
-    fmt.Printf("input the index url:(defult:\"https://www.ttt366.com\"):")
+    fmt.Printf("input the index url:(defult:\"https://www.ttt229.com\"):")
     fmt.Scanln(&init_url)
     if init_url == ""{
-        init_url = "https://www.ttt366.com"
+        init_url = "https://www.ttt229.com/"
     }
     // 获取输入的网址，如果没有输入，则使用默认的网址
     page_index := []string{"1","2","3","4","6","7","8"}
